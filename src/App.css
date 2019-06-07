@@ -1,0 +1,49 @@
+.App {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1000px;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.card {
+  text-align: center;
+  background-color: blue;
+}
+
+.highcharts-credits {
+  display: none;
+}
+
+.charts-container {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.chart-item {
+  width: 500px;
+  /* height: 100px; */
+
+}
+
+.searchbar-container {
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.searchbar-container > div {
+  padding: 5px;
+}
