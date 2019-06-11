@@ -5,21 +5,25 @@ import SearchBar from './SearchBar';
 import ChartResults from './ChartResults';
 
 export default function PitchingTool(props) {
-  const [playerName, setPlayerName] = useState("");
-  let player = { value: playerName, label: playerName };
+  const [playerName, setPlayerName] = useState("Nick Vincent");
+  const [playerId, setPlayerId] = useState("nvincent");
+  const [metrics, setMetrics] = useState(['ACES', 'Whiffs']);
+  const playerObject = { value: playerId, label: playerName };
+  const metricsObject = metrics.map(cv => ({ value: cv, label: cv }));
 
   return (
     <div>
-      {/* InfoHeading -- TODO */}
       <InfoHeading />
-      {/* SearchBar -- TODO */}
       <SearchBar
+        setPlayerId={setPlayerId}
         setPlayerName={setPlayerName}
-        player={player}
+        player={playerObject}
+        setMetrics={setMetrics}
+        metricsObject={metricsObject}
       />
-      <ChartResults />
-      {/* ChartResults -- TODO */}
+      <ChartResults
+        playerId={playerObject.value}
+      />
     </div>
-
   );
 }

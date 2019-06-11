@@ -27,6 +27,7 @@ const options = {
     gridLineInterpolation: 'polygon',
     lineWidth: 0,
     min: 0,
+    max: 100,
     labels: {
       formatter: function() {
         return this.value + '%';
