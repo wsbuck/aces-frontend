@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/rotopope/static/css/main.94d46676.chunk.css",
+    "main.js": "/rotopope/static/js/main.85f6e64f.chunk.js",
+    "main.js.map": "/rotopope/static/js/main.85f6e64f.chunk.js.map",
+    "runtime~main.js": "/rotopope/static/js/runtime~main.4f6df7dd.js",
+    "runtime~main.js.map": "/rotopope/static/js/runtime~main.4f6df7dd.js.map",
+    "static/js/2.2ee40941.chunk.js": "/rotopope/static/js/2.2ee40941.chunk.js",
+    "static/js/2.2ee40941.chunk.js.map": "/rotopope/static/js/2.2ee40941.chunk.js.map",
+    "index.html": "/rotopope/index.html",
+    "precache-manifest.d23222b0ff2566358e9348ae6a9bdb9a.js": "/rotopope/precache-manifest.d23222b0ff2566358e9348ae6a9bdb9a.js",
+    "service-worker.js": "/rotopope/service-worker.js",
+    "static/css/main.94d46676.chunk.css.map": "/rotopope/static/css/main.94d46676.chunk.css.map"
+  }
+}
