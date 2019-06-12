@@ -25,7 +25,8 @@ export default function ChartResults(props) {
       .then(data => {
         // console.log(data);
         const pitchDistArray = [];
-        const whiffMetric = [];
+        let whiffMetric = [];
+        console.log(props.metrics);
         for (let pitchType of Object.keys(data)) {
           if (pitchType !== 'pitcherId' 
             && pitchType !== 'pitcherName'
@@ -44,13 +45,14 @@ export default function ChartResults(props) {
             whiffMetric.push(whiff);
           }
         }
-        // console.log(pitchDistArray);
         setPitchDist(pitchDistArray);
-        setPitchMetrics({ whiff: whiffMetric.map(x => x * 100) });
+        whiffMetric = props.metrics.includes('Whiffs') 
+          ? whiffMetric.map(x => x * 100) : [];
+        setPitchMetrics({ whiff: whiffMetric });
       })
       // .then(data => loadData(data))
       .catch(err => console.log(err));
-  }, [props.playerId]);
+  }, [props.playerId, props.metrics]);
 
 return (
   <div className="charts-container">

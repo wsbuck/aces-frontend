@@ -10,11 +10,13 @@ export default function SpiderChart(props) {
   const options = {
     chart: {
       polar: true,
-      type: 'line'
+      type: 'line',
+      backgroundColor: null
     },
     title: {
       text: 'Percentiles of Pitches',
     },
+    colors: ['#adeee3', '#85ddcf', '#64baab', '#3c7269', '#28423d', '#213732', '#162422'],
     pane: {
       size: '80%'
     },
@@ -40,11 +42,11 @@ export default function SpiderChart(props) {
       pointFormat: '<span style="color:{series.color}">{series.name}: <b>{point.y:,.0f}%</b><br/>'
     },
     series: [
-      // {
-      //   name: 'ACES',
-      //   data: [54, 25, 21, 35, 17, 10],
+      {
+        name: 'ACES',
+        data: props.pitchMetrics.aces
       //   pointPlacement: 'on'
-      // },
+      },
       {
         name: 'Whiffs',
         data: props.pitchMetrics.whiff

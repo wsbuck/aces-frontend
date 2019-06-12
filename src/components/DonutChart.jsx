@@ -3,6 +3,7 @@ import React from 'react';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 
+
 export default function DonutChart(props) {
   // const [data, setData] = useState([
   //   {y: 1},
@@ -16,11 +17,13 @@ export default function DonutChart(props) {
 
   let options = {
     chart: {
-      type: 'pie'
+      type: 'pie',
+      backgroundColor: null
     },
     title: {
       text: 'Percentage of Pitches Thrown'
     },
+    colors: ['#adeee3', '#85ddcf', '#64baab', '#3c7269', '#28423d', '#213732', '#162422'],
     tooltip: {
       pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
     },
