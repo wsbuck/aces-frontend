@@ -1,15 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 
-// import { pitchData } from './tempData';
-
 export default function DonutChart(props) {
-  const [data, setData] = useState([
-    {name: 'FA', y: 0.25},
-    {name: 'CU', y: 0.75}
-  ]);
+  // const [data, setData] = useState([
+  //   {y: 1},
+  //   {y: 1},
+  //   {y: 1},
+  //   {y: 1},
+  //   {y: 1},
+  //   {y: 1},
+  //   {y: 1}
+  // ]);
 
   let options = {
     chart: {
@@ -37,24 +40,23 @@ export default function DonutChart(props) {
       name: 'Pitch',
       innerSize: '50%',
       colorByPoint: true,
-      data: data
+      // data: data
+      data: props.pitchDist
     }]
   }
 
-  useEffect(() => {
-    updateData(props.pitchDist);
-  }, [props.pitchDist]);
+  // useEffect(() => {
+  //   updateData(props.pitchDist);
+  // }, [props.pitchDist]);
 
-  function updateData(data) {
-    setData(data);
-  }
+  // function updateData(data) {
+  //   setData(data);
+  // }
 
   return (
-    <>
     <HighchartsReact
       highcharts={Highcharts}
       options={options}
     />
-    </>
   );
 }

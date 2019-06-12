@@ -38,7 +38,7 @@ export default function SearchBar(props) {
     fetch(endpoint, lookupOptions)
       // .then(result => console.log(result))
       .then(result => result.json())
-      .then(data => setPlayers(prepareData(data.splice(0, 100)))
+      .then(data => setPlayers(prepareData(data))
       );
   }, []);
 
@@ -52,6 +52,7 @@ export default function SearchBar(props) {
     <div className="searchbar-container">
       <Select
         options={players}
+        defaultOptions
         value={props.player}
         onChange={handlePlayerChange}
       />
