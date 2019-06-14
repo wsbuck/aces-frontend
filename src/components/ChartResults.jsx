@@ -5,8 +5,10 @@ import DonutChart from './DonutChart';
 import SpiderChart from './SpiderChart';
 
 export default function ChartResults(props) {
-  const [pitchDist, setPitchDist] = useState([]);
-  const [pitchMetrics, setPitchMetrics] = useState({});
+  const [pitchDist, setPitchDist] = useState([{}, {}, {}, {}, {}, {}]);
+  const [pitchMetrics, setPitchMetrics] = useState(
+    { whiff: [0, 0, 0, 0, 0, 0] }
+  );
 
   useEffect(() => {
     console.log('chart results effect');

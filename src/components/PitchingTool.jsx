@@ -12,15 +12,17 @@ export default function PitchingTool(props) {
   const metricsObject = metrics.map(cv => ({ value: cv, label: cv }));
 
   return (
-    <div>
-      <InfoHeading />
-      <SearchBar
-        setPlayerId={setPlayerId}
-        setPlayerName={setPlayerName}
-        player={playerObject}
-        setMetrics={setMetrics}
-        metricsObject={metricsObject}
-      />
+    <div className="card">
+      <div className="">
+        <InfoHeading />
+        <SearchBar
+          setPlayerId={setPlayerId}
+          setPlayerName={setPlayerName}
+          player={playerObject}
+          setMetrics={setMetrics}
+          metricsObject={metricsObject}
+        />
+      </div>
       <ChartResults
         playerId={playerObject.value}
         metrics={metrics}
