@@ -22,7 +22,7 @@ export default function InfoHeading(props) {
 
   return (
     <div>
-      <h1>Pitching Tool</h1>
+      <h1>Pitching Dashboard</h1>
       <h3>Last Updated: {lastUpdate}</h3>
     </div>
   );

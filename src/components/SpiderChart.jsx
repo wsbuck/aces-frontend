@@ -53,11 +53,12 @@ export default function SpiderChart(props) {
         // data: [50, 39, 42, 31, 26, 14],
         // pointPlacement: 'on'
       },
-      // {
-      //   name: 'CSW%',
+      {
+        name: 'CSW',
+        data: props.pitchMetrics.csw
       //   data: [20, 19, 62, 71, 96, 19],
       //   pointPlacement: 'on'
-      // },
+      },
       // {
       //   name: 'GB+PU%',
       //   data: [22, 93, 33, 45, 78, 34],

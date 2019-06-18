@@ -7,7 +7,7 @@ import Select from 'react-select';
 const metricOptions = [
   { value: 'ACES', label: 'ACES' },
   { value: 'Whiffs', label: 'Whiffs' },
-  { value: 'CSW%', label: 'CSW%' },
+  { value: 'CSW', label: 'CSW' },
   { value: 'GB+PU%', label: 'GB+PU%' }
 ]
 
@@ -20,8 +20,10 @@ export default function SearchBar(props) {
   }
 
   function handleMetricChange(selectedOption) {
-    const metrics = selectedOption.map(cv => cv.value);
-    props.setMetrics([...metrics]);
+    if (selectedOption) {
+      const metrics = selectedOption.map(cv => cv.value);
+      props.setMetrics([...metrics]);
+    }
   }
 
   useEffect(() => {

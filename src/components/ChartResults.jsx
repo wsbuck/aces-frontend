@@ -5,9 +5,11 @@ import DonutChart from './DonutChart';
 import SpiderChart from './SpiderChart';
 
 export default function ChartResults(props) {
-  const [pitchDist, setPitchDist] = useState([{}, {}, {}, {}, {}, {}]);
+  const [pitchDist, setPitchDist] = useState([
+    {y: 0}, {y: 0}, {y: 0}, {y: 0}, {y: 0}, {y: 0}
+  ]);
   const [pitchMetrics, setPitchMetrics] = useState(
-    { whiff: [0, 0, 0, 0, 0, 0] }
+    { whiff: [0, 0, 0, 0, 0, 0], csw: [0, 0, 0, 0, 0, 0] }
   );
 
   useEffect(() => {
@@ -28,7 +30,7 @@ export default function ChartResults(props) {
         // console.log(data);
         const pitchDistArray = [];
         let whiffMetric = [];
-        console.log(props.metrics);
+        let cswMetric = [];
         for (let pitchType of Object.keys(data)) {
           if (pitchType !== 'pitcherId' 
             && pitchType !== 'pitcherName'
@@ -36,21 +38,26 @@ export default function ChartResults(props) {
             // let dist = (data[pitchType].Num /  data['ALL'].Num);
             let dist = data[pitchType].Num
             let whiff = data[pitchType]['Whiffs%Rank'];
+            let csw = data[pitchType]['CSWRank'];
             let name;
             if (dist === 0) {
               name = "";
               whiff = 0;
+              csw = 0;
             } else {
               name = pitchType;
             }
             pitchDistArray.push({ name: name, y: Number(dist) });
             whiffMetric.push(whiff);
+            cswMetric.push(csw);
           }
         }
         setPitchDist(pitchDistArray);
         whiffMetric = props.metrics.includes('Whiffs') 
-          ? whiffMetric.map(x => x * 100) : [];
-        setPitchMetrics({ whiff: whiffMetric });
+          ? whiffMetric.map(x => x * 100) : [0, 0, 0, 0, 0, 0];
+        cswMetric = props.metrics.includes('CSW')
+          ? cswMetric.map(x => x * 100) : [0, 0, 0, 0, 0, 0];
+        setPitchMetrics({ whiff: whiffMetric, csw: cswMetric });
       })
       // .then(data => loadData(data))
       .catch(err => console.log(err));
