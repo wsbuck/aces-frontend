@@ -1,19 +1,29 @@
 import React, { useState, useEffect } from 'react';
 
 import DonutChart from './DonutChart';
-// import DonutChart2 from './DonutChart2';
 import SpiderChart from './SpiderChart';
 
 export default function ChartResults(props) {
   const [pitchDist, setPitchDist] = useState([
-    {y: 0}, {y: 0}, {y: 0}, {y: 0}, {y: 0}, {y: 0}
+    { y: 0 }, { y: 0 }, { y: 0 }, { y: 0 }, { y: 0 }, { y: 0 }
   ]);
   const [pitchMetrics, setPitchMetrics] = useState(
-    { whiff: [0, 0, 0, 0, 0, 0], csw: [0, 0, 0, 0, 0, 0] }
+    {
+      whiff: [0, 0, 0, 0, 0, 0],
+      csw: [0, 0, 0, 0, 0, 0],
+      aces: [0, 0, 0, 0, 0, 0]
+    }
+  );
+  const [playerMetrics, setPlayerMetrics] = useState(
+    {
+      whiff: 0,
+      cws: 0,
+      aces: 0
+    }
   );
 
   useEffect(() => {
-    console.log('chart results effect');
+    // console.log('chart results effect');
     const playerId = props.playerId;
     const endpoint = `https://ks506u80el.execute-api.us-west-2.amazonaws.com/dev/pitcher/${playerId}`;
     let lookupOptions = {
@@ -31,14 +41,19 @@ export default function ChartResults(props) {
         const pitchDistArray = [];
         let whiffMetric = [];
         let cswMetric = [];
+        let acesMetric = [];
+        let playerMetric = {};
         for (let pitchType of Object.keys(data)) {
-          if (pitchType !== 'pitcherId' 
+          if (pitchType !== 'pitcherId'
             && pitchType !== 'pitcherName'
             && pitchType !== 'All') {
-            // let dist = (data[pitchType].Num /  data['ALL'].Num);
             let dist = data[pitchType].Num
             let whiff = data[pitchType]['Whiffs%Rank'];
             let csw = data[pitchType]['CSWRank'];
+            let aces = data[pitchType]['ACES'];
+            whiff = whiff > 0 ? whiff : 0;
+            csw = csw > 0 ? csw : 0;
+            aces = aces > 0 ? aces : 0;
             let name;
             if (dist === 0) {
               name = "";
@@ -50,33 +65,41 @@ export default function ChartResults(props) {
             pitchDistArray.push({ name: name, y: Number(dist) });
             whiffMetric.push(whiff);
             cswMetric.push(csw);
-          }
+            acesMetric.push(aces);
+          } 
         }
         setPitchDist(pitchDistArray);
-        whiffMetric = props.metrics.includes('Whiffs') 
+        whiffMetric = props.metrics.includes('Whiffs')
           ? whiffMetric.map(x => x * 100) : [0, 0, 0, 0, 0, 0];
         cswMetric = props.metrics.includes('CSW')
           ? cswMetric.map(x => x * 100) : [0, 0, 0, 0, 0, 0];
-        setPitchMetrics({ whiff: whiffMetric, csw: cswMetric });
+        acesMetric = props.metrics.includes('ACES')
+          ? acesMetric.map(x => x * 100) : [0, 0, 0, 0, 0, 0];
+        setPitchMetrics({
+          whiff: whiffMetric,
+          csw: cswMetric,
+          aces: acesMetric,
+        });
       })
       // .then(data => loadData(data))
       .catch(err => console.log(err));
   }, [props.playerId, props.metrics]);
 
-return (
-  <div className="charts-container">
-    <div className='chart-item'>
-      <DonutChart 
-        playerId={props.playerId}
-        pitchDist={pitchDist}
-      />
+  return (
+    <div className="charts-container">
+      {/* <MetricTable /> */}
+      <div className='chart-item'>
+        <DonutChart
+          playerId={props.playerId}
+          pitchDist={pitchDist}
+        />
+      </div>
+      <div className="chart-item">
+        <SpiderChart
+          playerId={props.playerId}
+          pitchMetrics={pitchMetrics}
+        />
+      </div>
     </div>
-    <div className="chart-item">
-      <SpiderChart 
-        playerId={props.playerId} 
-        pitchMetrics={pitchMetrics}
-      />
-    </div>
-  </div>
-);
+  );
 }

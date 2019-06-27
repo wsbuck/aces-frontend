@@ -8,7 +8,7 @@ const metricOptions = [
   { value: 'ACES', label: 'ACES' },
   { value: 'Whiffs', label: 'Whiffs' },
   { value: 'CSW', label: 'CSW' },
-  { value: 'GB+PU%', label: 'GB+PU%' }
+  // { value: 'GB+PU%', label: 'GB+PU%' }
 ]
 
 export default function SearchBar(props) {
@@ -28,7 +28,6 @@ export default function SearchBar(props) {
 
   useEffect(() => {
     console.log('getting players');
-    // const endpoint = 'http://localhost:5000/pitchers'
     const endpoint = 'https://ks506u80el.execute-api.us-west-2.amazonaws.com/dev/pitchers';
     let lookupOptions = {
       method: 'GET',
@@ -57,6 +56,7 @@ export default function SearchBar(props) {
         defaultOptions
         value={props.player}
         onChange={handlePlayerChange}
+        className="player-search"
       />
       <Select
         closeMenuOnSelect={false}

@@ -11,9 +11,11 @@ export default function DonutChart(props) {
       backgroundColor: null
     },
     title: {
-      text: 'Percentage of Pitches Thrown'
+      text: 'Pitch Distribution'
     },
-    colors: ['#adeee3', '#85ddcf', '#64baab', '#3c7269', '#28423d', '#162422'],
+    // colors: ['#7cb5ec', '#f7a35c', '#90ee7e', '#7798BF', '#aaeeee', '#ff0066',
+    // '#eeaaee', '#55BF3B', '#DF5353', '#7798BF', '#aaeeee'],
+    colors: ['#819ca9', '#29434e', '#1e88e5', '#6ab7ff', '#005cb2', '#546e7a'],
     tooltip: {
       pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
     },

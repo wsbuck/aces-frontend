@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import InfoHeading from './InfoHeading';
 import SearchBar from './SearchBar';
 import ChartResults from './ChartResults';
+import MetricTable from './MetricTable';
 
 export default function PitchingTool(props) {
   const [playerName, setPlayerName] = useState("Clayton Kershaw");
@@ -15,6 +16,7 @@ export default function PitchingTool(props) {
     <div className="card">
       <div className="">
         <InfoHeading />
+        <div className="search-and-metric-container">
         <SearchBar
           setPlayerId={setPlayerId}
           setPlayerName={setPlayerName}
@@ -22,6 +24,8 @@ export default function PitchingTool(props) {
           setMetrics={setMetrics}
           metricsObject={metricsObject}
         />
+        <MetricTable />
+        </div>
       </div>
       <ChartResults
         playerId={playerObject.value}
