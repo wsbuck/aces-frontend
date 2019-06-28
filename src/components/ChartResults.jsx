@@ -61,7 +61,7 @@ export default function ChartResults(props) {
           } else if (pitchType === 'All') {
             // console.log(data[pitchType]);
             props.setPlayerMetrics({
-              Whiffs: {value: data[pitchType]['Whiffs'], percentile: data[pitchType]['Whiffs%Rank']},
+              Whiffs: {value: data[pitchType]['Whiffs%'], percentile: data[pitchType]['Whiffs%Rank']},
               CSW: {value: data[pitchType]['CSW'], percentile: data[pitchType]['CSWRank']},
               ACES: {value: data[pitchType]['ACES_Value'], percentile: data[pitchType]['ACES']}
             });
