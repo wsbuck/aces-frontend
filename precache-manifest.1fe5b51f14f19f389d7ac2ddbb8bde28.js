@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "4b977bbb10f62b22d70948db1de65643",
+    "revision": "71c77255405613a03a5a52cd01262524",
     "url": "/aces-frontend/index.html"
   },
   {
-    "revision": "a29b14b17f6fad76ca1c",
+    "revision": "5cc20f156f24f70fcc44",
     "url": "/aces-frontend/static/css/main.816d9f14.chunk.css"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/aces-frontend/static/js/2.3eb23ec5.chunk.js"
   },
   {
-    "revision": "a29b14b17f6fad76ca1c",
-    "url": "/aces-frontend/static/js/main.a64c9ad2.chunk.js"
+    "revision": "5cc20f156f24f70fcc44",
+    "url": "/aces-frontend/static/js/main.dae1f38c.chunk.js"
   },
   {
     "revision": "0de33708ef37278adf72",
