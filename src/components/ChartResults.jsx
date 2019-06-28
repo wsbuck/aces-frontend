@@ -14,13 +14,6 @@ export default function ChartResults(props) {
       aces: [0, 0, 0, 0, 0, 0]
     }
   );
-  const [playerMetrics, setPlayerMetrics] = useState(
-    {
-      whiff: 0,
-      cws: 0,
-      aces: 0
-    }
-  );
 
   useEffect(() => {
     // console.log('chart results effect');
@@ -42,7 +35,6 @@ export default function ChartResults(props) {
         let whiffMetric = [];
         let cswMetric = [];
         let acesMetric = [];
-        let playerMetric = {};
         for (let pitchType of Object.keys(data)) {
           if (pitchType !== 'pitcherId'
             && pitchType !== 'pitcherName'
@@ -66,7 +58,14 @@ export default function ChartResults(props) {
             whiffMetric.push(whiff);
             cswMetric.push(csw);
             acesMetric.push(aces);
-          } 
+          } else if (pitchType === 'All') {
+            // console.log(data[pitchType]);
+            props.setPlayerMetrics({
+              Whiffs: {value: data[pitchType]['Whiffs'], percentile: data[pitchType]['Whiffs%Rank']},
+              CSW: {value: data[pitchType]['CSW'], percentile: data[pitchType]['CSWRank']},
+              ACES: {value: data[pitchType]['ACES_Value'], percentile: data[pitchType]['ACES']}
+            });
+          }
         }
         setPitchDist(pitchDistArray);
         whiffMetric = props.metrics.includes('Whiffs')
@@ -81,13 +80,11 @@ export default function ChartResults(props) {
           aces: acesMetric,
         });
       })
-      // .then(data => loadData(data))
       .catch(err => console.log(err));
-  }, [props.playerId, props.metrics]);
+  }, [props.playerId, props.metrics, props.setPlayerMetrics]); // eslint-disable-line 
 
   return (
     <div className="charts-container">
-      {/* <MetricTable /> */}
       <div className='chart-item'>
         <DonutChart
           playerId={props.playerId}

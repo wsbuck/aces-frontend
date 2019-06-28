@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 export default function MetricTable(props) {
+  let playerMetrics = props.playerMetrics;
+
   return (
     <div className="metric-table-container">
       <table className="metric-table">
@@ -12,18 +14,18 @@ export default function MetricTable(props) {
           </tr>
           <tr>
             <td>ACES</td>
-            <td>85%</td>
-            <td>55%</td>
+            <td>{playerMetrics['ACES']['value'].toFixed(2)}</td>
+            <td>{(playerMetrics['ACES']['percentile'] * 100).toFixed(0) + '%'}</td>
           </tr>
           <tr>
             <td>Whiffs%</td>
-            <td>85%</td>
-            <td>55%</td>
+            <td>{playerMetrics['Whiffs']['value'].toFixed(2)}</td>
+            <td>{(playerMetrics['Whiffs']['percentile'] * 100).toFixed(0) + '%'}</td>
           </tr>
           <tr>
             <td>CSW%</td>
-            <td>85%</td>
-            <td>55%</td>
+            <td>{playerMetrics['CSW']['value'].toFixed(2)}</td>
+            <td>{(playerMetrics['CSW']['percentile'] * 100).toFixed(0) + '%'}</td>
           </tr>
         </tbody>
       </table>
